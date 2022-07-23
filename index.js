@@ -4,7 +4,7 @@ const app = new Application();
 
 const tasks = [];
 
-const posts = new Router()
+const taskRoutes = new Router()
   .get("/", (ctx) => {
     ctx.response.body = `Welcome to this API`;
   })
@@ -12,12 +12,9 @@ const posts = new Router()
     ctx.response.body = tasks;
   })
   .post("/tasks", (ctx) => {
-    ctx.response.body = 'Creating task'
+    ctx.response.body = "Creating task";
   });
 
-const forums = new Router()
-  .use("/forums/:forumId/posts", posts.routes(), posts.allowedMethods());
+app.use(taskRoutes.routes());
 
-await new Application()
-  .use(forums.routes())
-  .listen({ port: 8000 });
+await app.listen({ port: 8000 });
