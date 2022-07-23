@@ -8,7 +8,7 @@ const taskRoutes = new Router()
   .get("/", (ctx) => {
     ctx.response.body = `Welcome to this API`;
   })
-  .get("tasks", (ctx) => {
+  .get("/tasks", (ctx) => {
     ctx.response.body = tasks;
   })
   .post("/tasks", (ctx) => {
